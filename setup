@@ -1,0 +1,3 @@
+#!/bin/bash
+cd hActivate
+paster setup-app development.ini
