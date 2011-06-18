@@ -1,7 +1,8 @@
-from civicboom.model.declarative_objects  import *
+from hactivate.model.declarative_objects  import *
 
-from civicboom.model.meta import Session
+from hactivate.model.meta import Session
 
+from sqlalchemy.orm.exc import NoResultFound
 
 def get_user(user):
     if isinstance(user, User):
@@ -14,7 +15,7 @@ def get_user(user):
 
 
 def get_item(item):
-    if isinstance(user, Item):
+    if isinstance(item, Item):
         return item
     try:
         return Session.query(Item).filter_by(id=item).one()

@@ -61,7 +61,7 @@ class User(Base):
     #feedback_score = Column(Integer(), nullable=False, default=0, doc="Controlled by trigger") # TODO!!! # AllanC - short term can create a @property to fake this by actually pulling all fedback records and processing
 
     searchs  = relationship("UserSearch"          , backref=backref('user'), cascade="all,delete-orphan")
-    contacts = relationship("UserContect"         , backref=backref('user'), cascade="all,delete-orphan")
+    contacts = relationship("UserContact"         , backref=backref('user'), cascade="all,delete-orphan")
     feedback = relationship("UserFeedback"        , backref=backref('user'), cascade="all,delete-orphan")
 
     requests = relationship("ItemRequest"         , backref=backref('user'), cascade="all,delete-orphan")
