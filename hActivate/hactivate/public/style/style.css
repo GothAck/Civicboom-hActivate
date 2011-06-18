@@ -1,0 +1,49 @@
+html, body {
+    height: 100%;
+    background-color: #668DAB;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+#wrapper {
+    background-color: white;
+    margin: 2em auto 0 auto;
+    padding: 1em;
+    width: 1024px;
+}
+
+#title_bar {
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    clear: both;
+}
+
+#menu {
+    padding: 0;
+    margin: 0;
+    display: inline-block;
+    width: 250px;
+    height: 500px;
+    border: 1px solid black;
+}
+
+#item_canvas {
+    padding: 0;
+    margin: 0;
+    display: inline-block;
+    width: 250px;
+    height: 500px;
+    border: 1px solid black;
+}
+
+#map_canvas {
+    padding: 0;
+    margin: 0;
+    display: inline-block;
+    height: 500px;
+    width: 500px;
+}
