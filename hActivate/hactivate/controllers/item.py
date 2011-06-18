@@ -5,6 +5,7 @@ class ItemController(BaseController):
     """
 
     def view_items(self):
+        c.items = get_items()
         return render('view_items.mako')
         
     def view_item(self, id):
