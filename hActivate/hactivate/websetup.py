@@ -6,6 +6,9 @@ import pylons.test
 from hactivate.config.environment import load_environment
 from hactivate.model.meta import Session, Base
 
+from hactivate.init_base_data import init_base_data
+
+
 log = logging.getLogger(__name__)
 
 def setup_app(command, conf, vars):
@@ -16,3 +19,5 @@ def setup_app(command, conf, vars):
 
     # Create the tables if they don't already exist
     Base.metadata.create_all(bind=Session.bind)
+
+    init_base_data()
