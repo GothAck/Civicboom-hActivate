@@ -1,0 +1,3 @@
+include hactivate/config/deployment.ini_tmpl
+recursive-include hactivate/public *
+recursive-include hactivate/templates *

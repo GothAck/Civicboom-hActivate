@@ -1,0 +1,11 @@
+# compiled files
+*.pyc
+*.mo
+*.sql
+*.bz2
+
+# swap and eclipse/aptana project files
+*.swp
+.project
+.pydevproject
+
