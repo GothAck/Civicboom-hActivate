@@ -10,6 +10,10 @@ class ItemController(BaseController):
     def view_item(self, id):
         c.item = get_item(id)
         return render('view_item.mako')
+        
+    def view_user(self, id):
+        c.user = get_user(id)
+        return render('view_user.mako')
 
     # ----------------------------------------------------------
 
