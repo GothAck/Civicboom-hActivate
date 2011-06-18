@@ -7,6 +7,8 @@ from pylons.templating import render_mako as render
 
 from hactivate.model.meta import Session
 
+from hactivate.lib.database_get import get_item, get_items, get_user
+
 class BaseController(WSGIController):
 
     def __call__(self, environ, start_response):
