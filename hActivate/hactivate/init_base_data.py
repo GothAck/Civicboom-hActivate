@@ -11,6 +11,10 @@ def init_base_data():
         u1 = User()
         u1.username      = u"test"
         u1.name          = "TES MONKEY MAN"
-
-        Session.add_all([u1])
+        
+        u2 = User()
+        u2.username      = u"elroid"
+        u2.name          = "Elliot Test"
+        
+        Session.add_all([u1,u2])
         Session.commit()
