@@ -45,7 +45,13 @@ class User(Base):
     home_lon  = Column(Float())
     home_lat  = Column(Float())
     home_text = Column(Unicode(250),   nullable=False, default=u"") # Created from reverse geocode
+    
+    feedback_score = Column(Integer(), nullable=False, default=0, doc="Controlled by trigger") # TODO!!! # AllanC - short term can create a @property to fake this by actually pulling all fedback records and processing
 
+    searchs  = relationship("UserSearch"          , backref=backref('user'), cascade="all,delete-orphan")
+    contacts = relationship("UserContect"         , backref=backref('user'), cascade="all,delete-orphan")
+    feedback = relationship("UserFeedback"        , backref=backref('user'), cascade="all,delete-orphan")
+    
 
 class UserSearch(Base):
     __tablename__   = "user_search"
@@ -58,6 +64,7 @@ class UserSearch(Base):
     
     keywords        = Column(Unicode(50),     nullable=False, default=u"") # comma serparated list of search words
 
+    
 
 class UserContact(Base):
     __tablename__   = "user_contact"
