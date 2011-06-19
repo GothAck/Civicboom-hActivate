@@ -65,6 +65,7 @@ class User(Base):
     feedback = relationship("UserFeedback"        , backref=backref('user'), cascade="all,delete-orphan")
 
     requests = relationship("ItemRequest"         , backref=backref('user'), cascade="all,delete-orphan")
+    items    = relationship("Item"                , backref=backref('user'), cascade="all,delete-orphan")
 
     @property
     def feedback_score(self):
