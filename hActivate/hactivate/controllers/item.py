@@ -1,5 +1,7 @@
 from hactivate.lib.base import *
 
+from hactivate.model.declarative_objects import *
+
 class ItemController(BaseController):
     """
     """
@@ -23,26 +25,34 @@ class ItemController(BaseController):
         if not request.params:
             return render('new_item.mako')
         
+        params = dict(request.params)
+        print params
+        
         # Default params
-        if 'user_id' not in request.params:
-            request.params['user_id'] = c.logged_in_user.id
+        if 'user_id' not in params:
+            params['user_id'] = c.logged_in_user.id
         
         # Create new item
         item = Item()
-        for (key,value) in request.params.iteritems():
+        for (key,value) in params.iteritems():
             # Convert types if needed
-            if isinstance(getattr(item,key), float):
-                value = float(value)
-            if isinstance(getattr(item,key), int):
-                value = int(value)
-            setattr(item, key, value)
+            if hasattr(item,key):
+                if isinstance(getattr(item,key), float):
+                    value = float(value)
+                if isinstance(getattr(item,key), int):
+                    value = int(value)
+                try:
+                    setattr(item, key, value)
+                except:
+                    pass # if we cant set it, sod it
         # insert into db
         Session.add(item)
         Session.commit()
         
         # trigger all search table to match
         #   send alerts to users contacts in search
-        pass
+        
+        return redirect(url(controller='item', action='view_item', id=item.id))
     
     def request(self, item_id):
         # im interested in item
