@@ -58,8 +58,8 @@ class ItemController(BaseController):
                 if keyword in item.description:
                     #print "distance from %s to %s" % ( search.lon , item.lon )
                     d = distance(search, item)
-                    print d, search.raduis
-                    if d < search.raduis:
+                    print d, search.radius
+                    if d < search.radius:
                         # search.user.notify('')
                         print "alert %s to %s" % (search.user.username, item.title)
                         notify(search.user, "New item found: %s" % (item.title))

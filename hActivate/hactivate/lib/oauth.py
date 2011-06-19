@@ -43,18 +43,18 @@ def apiCallCheck():
         return object
     
 def sendSMS(number, text):
-    consumer        = oauth.Consumer(key=key, secret=secret)
-    token           = oauth.Token(key=token, secret=token_secret)
+    l_consumer        = oauth.Consumer(key=key, secret=secret)
+    l_token           = oauth.Token(key=token, secret=token_secret)
     
     body = {"smsText": {
             "address":          {"phoneNumber":number},
-            "message":          "Message here",
-            "originAddress":    {"alias": token.key},
+            "message":          text,
+            "originAddress":    {"alias": l_token.key},
             },
         }
 
-    request         = oauth.Request.from_consumer_and_token(consumer, token, "POST", oauthUrls['smsSend'])#, parameters={'version':'v1', 'alt':'json'})
-    request.sign_request(sig_hmac, consumer, token)    
+    request         = oauth.Request.from_consumer_and_token(l_consumer, l_token, "POST", oauthUrls['smsSend'])#, parameters={'version':'v1', 'alt':'json'})
+    request.sign_request(sig_hmac, l_consumer, l_token)    
     
     body = json.dumps(body)
     connection = httplib.HTTPSConnection("api.bluevia.com")
