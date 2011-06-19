@@ -45,7 +45,7 @@ class ItemController(BaseController):
         Session.commit()
         
         # Push top external services
-        if c.logged_in_user != 'elroid':
+        if c.logged_in_user.username != 'elroid':
             hactivate.lib.push_to_services.freeminder(item)
         
         # trigger all search table to match
@@ -57,7 +57,7 @@ class ItemController(BaseController):
                 #print "searching for keyword %s in %s" % ( keyword , item.description )
                 if keyword in item.description:
                     #print "distance from %s to %s" % ( search.lon , item.lon )
-                    print distance(search, item)
+                    print distance(search, item), search.raduis
                     if distance(search, item) < search.raduis:
                         # search.user.notify('')
                         print "alert %s to %s" % (search.user.username, item.title)
