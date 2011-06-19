@@ -12,9 +12,9 @@ def distance(lon1,lat1,lon2,lat2):
     dlat = lat2 - lat1
     dlon = lon2 - lon1
     
-    a = ( math.sin(dlat/2) * math.sin(dlat/2) ) +\
+    a =  math.sin(dlat/2) * math.sin(dlat/2)  +\
         math.cos(lat1) * math.cos(lat2) *\
-        ( math.sin(dlon/2) * math.sin(dlon/2) )
+         math.sin(dlon/2) * math.sin(dlon/2) 
     c = math.atan2(math.sqrt(a), math.sqrt(1-a))
     d = R * c
     return d

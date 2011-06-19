@@ -36,7 +36,7 @@ class ItemController(BaseController):
         # Create new item
         item = Item()
         item.user = c.logged_in_user
-        dict_overlay(item, parms)
+        dict_overlay(item, params)
         
         # insert into db
         Session.add(item)
@@ -51,6 +51,7 @@ class ItemController(BaseController):
                 #print "searching for keyword %s in %s" % ( keyword , item.description )
                 if keyword in item.description:
                     #print "distance from %s to %s" % ( search.lon , item.lon )
+                    print distance(search, item)
                     if distance(search, item) < search.raduis:
                         # search.user.notify('')
                         print "alert %s to %s" % (search.user.username, item.title)

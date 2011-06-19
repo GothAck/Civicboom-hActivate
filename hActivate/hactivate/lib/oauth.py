@@ -69,4 +69,4 @@ def sendSMS(number, text):
     data = resp.read()
     
     print data, resp.status, resp.reason
-    return status==201
+    return resp.status==201
