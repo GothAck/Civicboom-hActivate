@@ -14,7 +14,7 @@
             <p class="flash_message">${c.flash}</p>
             % endif
             % if c.logged_in_user:
-            <p>Signed in as ${c.logged_in_user.username}</p>
+            <p>Signed in as ${c.logged_in_user.username} <a href="${url(controller='account', action='signout')}">signout</a></p>
             % else:
             <a href="${url(controller='account', action='signin')}">Signin</a>
             % endif
