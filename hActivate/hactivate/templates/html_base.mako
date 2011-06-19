@@ -10,19 +10,29 @@
     <body>
 
         <div class="header">
-            % if c.flash:
-            <p class="flash_message">${c.flash}</p>
-            % endif
-            % if c.logged_in_user:
-            <p>Signed in as ${c.logged_in_user.username} <a href="${url(controller='account', action='signout')}">signout</a></p>
-            % else:
-            <a href="${url(controller='account', action='signin')}">Signin</a>
-            % endif
+            
         </div>
 
         <div id="wrapper">
             <div id="title_bar">
-                <h1>FreeHoc</h1>
+                <a href="${url(controller='misc', action='titlepage')}"><img class="logo" src="/logo.png" /></a>
+                % if c.flash:
+                <p class="flash_message">${c.flash}</p>
+                % endif
+                % if c.logged_in_user:
+                <p>Signed in as ${c.logged_in_user.username} <a href="${url(controller='account', action='signout')}">signout</a></p>
+                % else:
+                <p><a href="${url(controller='account', action='signin')}">Signin</a></p>
+                % endif
+            </div>
+            <div style="clear: both;"></div>
+            <div id="menu">
+                <ul>
+                    <li><a href="${url(controller='misc', action='titlepage')}">Home</a></li>
+                    <li><a href="${url(controller='item', action='view_items')}">View Items</a></li>
+                    <li><a href="${url(controller='item', action='new_item')}">New Item</a></li>
+                    <li><a href="${url(controller='misc', action='test')}">Test</a></li>
+                </ul>
             </div>
             ${next.body()}
         </div>
@@ -30,9 +40,3 @@
     </body>
 
 </html>
-
-<%def name="menu()">
-    <div id="menu">
-        
-    </div>
-</%def>
