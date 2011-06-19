@@ -6,11 +6,29 @@ html, body {
 body {
     margin: 0;
     padding: 0;
+    font-family: sans-serif;
 }
 
 .logo {
+    float: left;
     width: 150px;
     border: 1px solid black;
+}
+
+.login {
+    float: right;
+}
+
+.flash_message {
+    color: white;
+    font-size: 115%;
+    position: absolute;
+    padding: 1em;
+    width: 30%;
+    margin-top: 10%;
+    margin-left: 30%;
+    text-align: center;
+    background-color: #446B89;
 }
 
 #wrapper {
@@ -19,10 +37,12 @@ body {
     margin: 2em;
     min-height: 80%;
     padding: 1em;
+    -moz-border-radius: 1em;
+    border-radius: 1em;
 }
 
 #title_bar {
-    padding: 0;
+    padding: 10px;
     margin: 0 0 1em 0;
     text-align: center;
     clear: both;
@@ -32,7 +52,7 @@ body {
     padding: 10px;
     margin: 0;
     display: block;
-    width: 230px;
+    width: 160px;
     border: 1px solid black;
 }
 
