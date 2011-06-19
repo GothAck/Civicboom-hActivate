@@ -6,11 +6,24 @@ html, body {
 body {
     margin: 0;
     padding: 0;
+    font-family: sans-serif;
 }
 
 .logo {
     width: 150px;
     border: 1px solid black;
+}
+
+.flash_message {
+    color: white;
+    font-size: 115%;
+    position: absolute;
+    padding: 1em;
+    width: 30%;
+    margin-top: 10%;
+    margin-left: 30%;
+    text-align: center;
+    background-color: #446B89;
 }
 
 #wrapper {
@@ -32,7 +45,7 @@ body {
     padding: 10px;
     margin: 0;
     display: block;
-    width: 230px;
+    width: 160px;
     border: 1px solid black;
 }
 

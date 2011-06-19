@@ -4,6 +4,7 @@
         <link rel="stylesheet" type="text/css" href="/style/style.css" />
         <script type="text/javascript" src="/javascript/jquery.js"></script>
         <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
+        <script type="text/javascript" src="/javascript/myjs.js"></script>
         <title>FreeHoc</title>
     </head>
     
@@ -31,7 +32,7 @@
                     <li><a href="${url(controller='misc', action='titlepage')}">Home</a></li>
                     <li><a href="${url(controller='item', action='view_items')}">View Items</a></li>
                     <li><a href="${url(controller='item', action='new_item')}">New Item</a></li>
-                    <li><a href="${url(controller='misc', action='test')}">Test</a></li>
+                    <li><a href="${url(controller='item', action='view_user', id=1)}">View User</a></li>
                 </ul>
             </div>
             ${next.body()}

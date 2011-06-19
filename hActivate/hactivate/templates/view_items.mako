@@ -64,7 +64,9 @@
                         "<br /><b>Type</b><br />" + item.type +
                         "<br /><b>Direction</b><br />" + item.direction;
             canvas = $('#item_canvas');
-            canvas.html(content);
+            canvas.fadeOut("normal", function() {
+                canvas.html(content).fadeIn();   
+            });
         }
     </script>
 
