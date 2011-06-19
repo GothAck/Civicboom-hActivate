@@ -29,11 +29,12 @@ class ItemController(BaseController):
         print params
         
         # Default params
-        if 'user_id' not in params:
-            params['user_id'] = c.logged_in_user.id
+        if not c.logged_in_user:
+            c.logged_in_user = get_user(params['user_id'])
         
         # Create new item
         item = Item()
+        item.user = c.logged_in_user
         for (key,value) in params.iteritems():
             # Convert types if needed
             if hasattr(item,key):
@@ -45,6 +46,7 @@ class ItemController(BaseController):
                     setattr(item, key, value)
                 except:
                     pass # if we cant set it, sod it
+        
         # insert into db
         Session.add(item)
         Session.commit()

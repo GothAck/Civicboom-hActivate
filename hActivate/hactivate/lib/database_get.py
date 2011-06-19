@@ -10,7 +10,10 @@ def get_user(user):
     try:
         return Session.query(User).filter_by(username=user).one()
     except NoResultFound:
-        pass
+        try:
+            return Session.query(User).filter_by(id=int(user)).one()
+        except NoResultFound:
+            pass
     return None
 
 
