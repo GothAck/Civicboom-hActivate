@@ -22,7 +22,7 @@ def distance(lon1,lat1,lon2,lat2):
 def dict_overlay(o, params):
     for (key,value) in params.iteritems():
         # Convert types if needed
-        if hasattr(0,key):
+        if hasattr(o,key):
             if isinstance(getattr(o,key), float):
                 value = float(value)
             if isinstance(getattr(o,key), int):

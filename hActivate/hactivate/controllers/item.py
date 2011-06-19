@@ -7,6 +7,8 @@ from hactivate.lib.helpers import distance
 
 from hactivate.lib.comms import notify
 
+import hactivate.lib.push_to_services
+
 class ItemController(BaseController):
     """
     """
@@ -41,6 +43,10 @@ class ItemController(BaseController):
         # insert into db
         Session.add(item)
         Session.commit()
+        
+        # Push top external services
+        if c.logged_in_user != 'elroid':
+            hactivate.lib.push_to_services.freeminder(item)
         
         # trigger all search table to match
         #   send alerts to users contacts in search
