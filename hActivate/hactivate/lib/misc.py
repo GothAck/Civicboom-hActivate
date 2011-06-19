@@ -1,10 +1,23 @@
 import math
 
-def distance(x1,y1,x2,y2):
-    x_diff = math.fabs(x1-x2)
-    y_diff = math.fabs(y1-y2)
+R = 6371
+
+def distance(lon1,lat1,lon2,lat2):
+    lat1 = math.radians(lat1)
+    lon1 = math.radians(lon1)
     
-    return math.sqrt(math.pow(x_diff,2) + math.pow(y_diff,2))
+    lat2 = math.radians(lat2)
+    lon2 = math.radians(lon2)
+    
+    dlat = lat2 - lat1
+    dlon = lon2 - lon1
+    
+    a = ( math.sin(dlat/2) * math.sin(dlat/2) ) +\
+        math.cos(lat1) * math.cos(lat2) *\
+        ( math.sin(dlon/2) * math.sin(dlon/2) )
+    c = math.atan2(math.sqrt(a), math.sqrt(1-a))
+    d = R * c
+    return d
     
 def dict_overlay(o, params):
     for (key,value) in params.iteritems():
