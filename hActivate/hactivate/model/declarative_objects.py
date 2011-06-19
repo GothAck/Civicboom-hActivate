@@ -70,6 +70,10 @@ class User(Base):
     @property
     def feedback_score(self):
         return 0
+    
+    def notify(self):
+        from hactivate.lib.comms import notify
+        notify(self)
 
 class UserSearch(Base):
     __tablename__   = "user_search"
@@ -90,6 +94,7 @@ class UserContact(Base):
     user_id         = Column(Integer(),     ForeignKey('user.id'),  nullable=False, index=True)
     contact_type    = Column(_contact_types,  nullable=False)
     data            = Column(Unicode(250),    nullable=False)
+    #data_id         = Column(Unicode(250),    nullable=True,        index=True)
     contact_direction_type = Column(_contact_directions,  nullable=False) # in or out
 
 

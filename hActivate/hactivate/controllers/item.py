@@ -2,7 +2,12 @@ from hactivate.lib.base import *
 
 from hactivate.model.declarative_objects import *
 
+from hactivate.lib.misc    import dict_overlay
 from hactivate.lib.helpers import distance
+
+from hactivate.lib.comms import notify
+
+import hactivate.lib.push_to_services
 
 class ItemController(BaseController):
     """
@@ -22,40 +27,26 @@ class ItemController(BaseController):
 
     # ----------------------------------------------------------
 
+    @auth
     def new_item(self):
         # Render input form if needed
         if not request.params:
             return render('new_item.mako')
         
         params = dict(request.params)
-        print params
-        
-        # Default params
-        if not c.logged_in_user:
-            if 'user_id' in params:
-                c.logged_in_user = get_user(params['user_id'])
-            else:
-                set_flash('please login')
-                redirect('/')
         
         # Create new item
         item = Item()
         item.user = c.logged_in_user
-        for (key,value) in params.iteritems():
-            # Convert types if needed
-            if hasattr(item,key):
-                if isinstance(getattr(item,key), float):
-                    value = float(value)
-                if isinstance(getattr(item,key), int):
-                    value = int(value)
-                try:
-                    setattr(item, key, value)
-                except:
-                    pass # if we cant set it, sod it
+        dict_overlay(item, params)
         
         # insert into db
         Session.add(item)
         Session.commit()
+        
+        # Push top external services
+        if c.logged_in_user != 'elroid':
+            hactivate.lib.push_to_services.freeminder(item)
         
         # trigger all search table to match
         #   send alerts to users contacts in search
@@ -69,6 +60,7 @@ class ItemController(BaseController):
                     if distance(search, item) < search.raduis:
                         # search.user.notify('')
                         print "alert %s to %s" % (search.user.username, item.title)
+                        notify(search.user, "New item found: %s" % (item.title))
         
         return redirect(url(controller='item', action='view_item', id=item.id))
     
@@ -104,6 +96,25 @@ class ItemController(BaseController):
             set_flash('item deleted')
         return redirect('/')
 
+    @auth
     def new_search(self):
-        pass
-    
+        if not request.params:
+            return render('new_search.mako')
+        
+        params = dict(request.params)
+        if 'radius' not in params:
+            params['radius'] = 0.01
+        # Delete black lon lats so it defaults to user location is missing
+        if 'lon' in params and not params.get('lon'):
+            del parms['lon']
+        if 'lat' in params and not params.get('lat'):
+            del parms['lat']
+        
+        search = UserSearch()
+        dict_overlay(search, params)
+        c.logged_in_user.searchs.append(search)
+        
+        Session.commit()
+        
+        set_flash('added search %s' % search.keywords)
+        return redirect(url(controller='item', action='view_user', id=c.logged_in_user.username))
