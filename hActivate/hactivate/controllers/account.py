@@ -20,7 +20,7 @@ class AccountController(BaseController):
     
     def signout(self):
         try:
-            session['user'] = request.params.get('username')
+            del session['user']
             session.save()
         except:
             pass
