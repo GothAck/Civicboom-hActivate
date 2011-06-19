@@ -2,6 +2,8 @@ from hactivate.lib.base import *
 
 from hactivate.model.declarative_objects import *
 
+from hactivate.lib.helpers import distance
+
 class ItemController(BaseController):
     """
     """
@@ -30,7 +32,11 @@ class ItemController(BaseController):
         
         # Default params
         if not c.logged_in_user:
-            c.logged_in_user = get_user(params['user_id'])
+            if 'user_id' in params:
+                c.logged_in_user = get_user(params['user_id'])
+            else:
+                set_flash('please login')
+                redirect('/')
         
         # Create new item
         item = Item()
@@ -53,6 +59,16 @@ class ItemController(BaseController):
         
         # trigger all search table to match
         #   send alerts to users contacts in search
+        for search in get_searchs():
+            print search.keywords
+            keywords = search.keywords.split(',')
+            for keyword in keywords:
+                #print "searching for keyword %s in %s" % ( keyword , item.description )
+                if keyword in item.description:
+                    #print "distance from %s to %s" % ( search.lon , item.lon )
+                    if distance(search, item) < search.raduis:
+                        # search.user.notify('')
+                        print "alert %s to %s" % (search.user.username, item.title)
         
         return redirect(url(controller='item', action='view_item', id=item.id))
     
@@ -77,8 +93,16 @@ class ItemController(BaseController):
     # ----------------------------------------------------------
 
     def delete_item(self, item_id):
-        # set status to closed
-        pass
+        get_item(item_id)
+        if item.user != c.logged_in_user:
+            set_flash('you are not the item owner')
+        else:
+            # set status to closed
+            item.status = 'closed'
+            #Session.delete()
+            Session.commit()
+            set_flash('item deleted')
+        return redirect('/')
 
     def new_search(self):
         pass

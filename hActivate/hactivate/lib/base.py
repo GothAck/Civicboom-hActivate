@@ -9,7 +9,7 @@ from pylons.controllers.util  import redirect
 
 from hactivate.model.meta import Session
 
-from hactivate.lib.database_get import get_item, get_items, get_user
+from hactivate.lib.database_get import *
 
 def set_flash(message):
     session['flash'] = message
