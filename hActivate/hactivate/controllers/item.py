@@ -5,6 +5,8 @@ from hactivate.model.declarative_objects import *
 from hactivate.lib.misc    import dict_overlay
 from hactivate.lib.helpers import distance
 
+from hactivate.lib.comms import notify
+
 class ItemController(BaseController):
     """
     """
@@ -52,6 +54,7 @@ class ItemController(BaseController):
                     if distance(search, item) < search.raduis:
                         # search.user.notify('')
                         print "alert %s to %s" % (search.user.username, item.title)
+                        notify(search.user, "New item found: %s" % (item.title))
         
         return redirect(url(controller='item', action='view_item', id=item.id))
     

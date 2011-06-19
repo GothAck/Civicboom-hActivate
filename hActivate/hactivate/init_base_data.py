@@ -19,6 +19,12 @@ def init_base_data():
         Session.add_all([u1,u2])
         Session.commit()
         
+        uc1 = UserContact()
+        uc1.contact_type = "sms"
+        uc1.data = "447928065717"
+        uc1.contact_direction_type = "out"
+        u2.contacts.append(uc1)
+        
         # -- Items ---
         
         i1 = Item()
@@ -56,6 +62,20 @@ def init_base_data():
         s1.lat =  -0.133188
         s1.keywords = "ladder"
         u1.searchs.append(s1)
+        
+        s1 = UserSearch()
+        s1.raduis = 1
+        s1.lon = -2.357254
+        s1.lat =  51.386352
+        s1.keywords = "mattress"
+        u2.searchs.append(s1)
+        
+        s1 = UserSearch()
+        s1.raduis = 1
+        s1.lon = -2.357254
+        s1.lat =  51.386352
+        s1.keywords = "camera"
+        u2.searchs.append(s1)
         
         #Session.add_all([i1, i0])
         Session.commit()
