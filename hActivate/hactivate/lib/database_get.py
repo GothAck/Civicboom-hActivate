@@ -33,3 +33,10 @@ def get_items():
     except NoResultFound:
         pass
     return []
+    
+def get_searchs():
+    try:
+        return Session.query(UserSearch).all()
+    except NoResultFound:
+        pass
+    return []

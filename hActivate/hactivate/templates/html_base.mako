@@ -30,8 +30,10 @@
                 <ul>
                     <li><a href="${url(controller='misc', action='titlepage')}">Home</a></li>
                     <li><a href="${url(controller='item', action='view_items')}">View Items</a></li>
+                    % if c.logged_in_user:
                     <li><a href="${url(controller='item', action='new_item')}">New Item</a></li>
-                    <li><a href="${url(controller='misc', action='test')}">Test</a></li>
+                    <li><a href="${url(controller='item', action='new_search')}">New Search</a></li>
+                    % endif
                 </ul>
             </div>
             ${next.body()}

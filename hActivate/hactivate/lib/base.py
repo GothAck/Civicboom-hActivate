@@ -7,13 +7,29 @@ from pylons.templating import render_mako as render
 from pylons import request, tmpl_context as c, session, url
 from pylons.controllers.util  import redirect
 
+from decorator import decorator
+
 from hactivate.model.meta import Session
 
-from hactivate.lib.database_get import get_item, get_items, get_user
+from hactivate.lib.database_get import *
 
 def set_flash(message):
     session['flash'] = message
     session.save()
+
+@decorator
+def auth(target, *args, **kwargs):
+    if not c.logged_in_user:
+        if 'user_id' in request.params:
+            c.logged_in_user = get_user(request.params['user_id'])
+        else:
+            set_flash('please login')
+            redirect('/')
+            
+    result = target(*args, **kwargs) # Execute the wrapped function
+
+    return result
+
 
 class BaseController(WSGIController):
 

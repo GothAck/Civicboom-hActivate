@@ -1,26 +1,28 @@
 <%inherit file="html_base.mako"/>
 
 <%def name="body()">
-    <form action="">
-        Title      <input type="text" name="title"      /><br />
-        Description<input type="text" name="description"/><br />
-    
-        ## Javascript map selector to go here    
+    <div id="content">
+        <form action="">
+            Title      <input type="text" name="title"      /><br />
+            Description<input type="text" name="description"/><br />
         
-        Lon        <input id="lng" type="text" name="lon"        /><br />
-        Lat        <input id="lat" type="text" name="lat"        />
-        
-        <input type="submit" name="submit" value="create item"/>
-    </form>
-    
-    <div id="map_canvas"></div>
+            ## Javascript map selector to go here    
+            
+            Lon        <input id="lng" type="text" name="lon"        /><br />
+            Lat        <input id="lat" type="text" name="lat"        />
+            
+            <input type="submit" name="submit" value="create item"/>
+        </form>
+        <p>Click an area on the map to auto-complete the item location</p>
+    </div>
+    <div id="map_canvas" style="height: 300px; width: 300px;"></div>
     
     <script type="text/javascript">
         $(document).ready(function() {
             // Init shit
-            var latlng = new google.maps.LatLng(0.0, 0.0);
+            var latlng = new google.maps.LatLng(51.5, -0.5);
             var myOpts = {
-                zoom: 8,
+                zoom: 5,
                 center: latlng,
                 mapTypeId: google.maps.MapTypeId.ROADMAP, // optons = ROADMAP, SATELLITE, HYBRID, TERRAIN
             };

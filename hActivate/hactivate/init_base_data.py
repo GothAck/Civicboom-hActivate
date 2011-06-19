@@ -18,7 +18,9 @@ def init_base_data():
         
         Session.add_all([u1,u2])
         Session.commit()
-
+        
+        # -- Items ---
+        
         i1 = Item()
         #i1.user_id              = 1
         i1.title                = "Bike Seat"
@@ -39,6 +41,21 @@ def init_base_data():
         i0.lat                  = 1.0
         u1.items.append(i0)
         
+        # -- Searchs ---
+        
+        s1 = UserSearch()
+        s1.raduis = 1
+        s1.lon =  51.532255
+        s1.lat =  -0.120335
+        s1.keywords = "bike"
+        u1.searchs.append(s1)
+        
+        s1 = UserSearch()
+        s1.raduis = 1
+        s1.lon =  51.539662
+        s1.lat =  -0.133188
+        s1.keywords = "ladder"
+        u1.searchs.append(s1)
         
         #Session.add_all([i1, i0])
         Session.commit()

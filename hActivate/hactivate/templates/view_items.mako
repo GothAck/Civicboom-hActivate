@@ -22,9 +22,9 @@
     
         $(document).ready(function() {
             // Init shit
-            var latlng = new google.maps.LatLng(0.0, 0.0);
+            var latlng = new google.maps.LatLng(51.5, -0.5);
             var myOpts = {
-                zoom: 8,
+                zoom: 5,
                 center: latlng,
                 mapTypeId: google.maps.MapTypeId.ROADMAP, // optons = ROADMAP, SATELLITE, HYBRID, TERRAIN
             };
@@ -37,7 +37,8 @@
                 marker = new google.maps.Marker({
                     position: ll,
                     map: map,
-                    title: id,
+                    id: id,
+                    title: item.title,
                     draggable: false,
                 });
                 add_listener(marker);
@@ -48,7 +49,7 @@
         // Add click listener for given marker
         function add_listener(marker) {
             google.maps.event.addListener(marker, 'click', function() {
-                populate_item(marker.title);
+                populate_item(marker.id);
             });
         }
         
