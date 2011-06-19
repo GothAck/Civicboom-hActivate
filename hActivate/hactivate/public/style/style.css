@@ -1,0 +1,53 @@
+html, body {
+    height: 100%;
+    background-color: #668DAB;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+#wrapper {
+    border: 1em solid #779EBC;
+    background-color: white;
+    margin: 2em auto 0 auto;
+    min-height: 600px;
+    padding: 1em;
+    width: 1024px;
+}
+
+#title_bar {
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    clear: both;
+}
+
+#menu {
+    float: left;
+    padding: 10px;
+    margin: 0;
+    display: inline-block;
+    width: 230px;
+    height: 480px;
+    border: 1px solid black;
+}
+
+#item_canvas {
+    float: right;
+    padding: 10px;
+    margin: 0;
+    display: inline-block;
+    width: 230px;
+    height: 480px;
+    border: 1px solid black;
+}
+
+#map_canvas {
+    padding: 0;
+    margin: 0;
+    display: inline-block;
+    height: 500px;
+    width: 500px;
+}

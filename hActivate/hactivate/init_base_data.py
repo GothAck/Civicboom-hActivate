@@ -18,3 +18,24 @@ def init_base_data():
         
         Session.add_all([u1,u2])
         Session.commit()
+
+        i1 = Item()
+        i1.user_id              = 1
+        i1.title                = "Bike Seat"
+        i1.description          = "You sit on it"
+        i1.item_type            = "item"
+        i1.direction_type       = "offer"
+        i1.lon                  = 0.0
+        i1.lat                  = 0.0
+        
+        i0 = Item()
+        i0.user_id              = 1
+        i0.title                = "Necromicon"
+        i0.description          = "Don't read it"
+        i0.item_type            = "item"
+        i0.direction_type       = "offer"
+        i0.lon                  = 1.0
+        i0.lat                  = 1.0
+        
+        Session.add_all([i1, i0])
+        Session.commit()
