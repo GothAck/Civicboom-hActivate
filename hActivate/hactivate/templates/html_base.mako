@@ -10,8 +10,9 @@
     <body>
         <div id="wrapper">
             <div id="title_bar">
-                <h1>FreeHoc</h1>
+                <img class="logo" src="/logo.png" />
             </div>
+            <div style="clear: both;"></div>
             ${next.body()}
         </div>
     </body>

@@ -8,6 +8,11 @@ body {
     padding: 0;
 }
 
+.logo {
+    width: 150px;
+    border: 1px solid black;
+}
+
 #wrapper {
     border: 1em solid #779EBC;
     background-color: white;
@@ -19,7 +24,7 @@ body {
 
 #title_bar {
     padding: 0;
-    margin: 0;
+    margin: 0 0 1em 0;
     text-align: center;
     clear: both;
 }
