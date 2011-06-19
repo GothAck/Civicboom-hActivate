@@ -18,14 +18,14 @@ def freeminder(item):
         'item_id'      : str(item.id)       ,
     })
     
+    print body
+    
     connection = httplib.HTTPConnection("www.free-minder.org")
-    
     headers = {'Content-Type': 'application/json'}
-    
     connection.request("POST", "http://www.free-minder.org/rest/offer" ,headers=headers, body=body)
     
     resp = connection.getresponse()
     data = resp.read()
     
     print data, resp.status, resp.reason
-    return resp.status==200
+    return resp.status==201
