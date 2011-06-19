@@ -10,7 +10,7 @@ from sqlalchemy.orm import relationship, backref
 
 
 
-_item_types         = Enum("item", "knwolege", "service", name="item_types")
+_item_types         = Enum("item", "knowledge", "service", name="item_types")
 _item_statuss       = Enum("open", "closed",              name="contact_statuss")
 _direction_types    = Enum("offer", "wanted",             name="direction_types")
 _contact_types      = Enum("twitter", "email", "sms",     name="contact_types")

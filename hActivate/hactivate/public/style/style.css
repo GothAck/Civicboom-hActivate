@@ -9,8 +9,10 @@ body {
 }
 
 #wrapper {
+    border: 1em solid #779EBC;
     background-color: white;
     margin: 2em auto 0 auto;
+    min-height: 600px;
     padding: 1em;
     width: 1024px;
 }
@@ -23,20 +25,22 @@ body {
 }
 
 #menu {
-    padding: 0;
+    float: left;
+    padding: 10px;
     margin: 0;
     display: inline-block;
-    width: 250px;
-    height: 500px;
+    width: 230px;
+    height: 480px;
     border: 1px solid black;
 }
 
 #item_canvas {
-    padding: 0;
+    float: right;
+    padding: 10px;
     margin: 0;
     display: inline-block;
-    width: 250px;
-    height: 500px;
+    width: 230px;
+    height: 480px;
     border: 1px solid black;
 }
 
