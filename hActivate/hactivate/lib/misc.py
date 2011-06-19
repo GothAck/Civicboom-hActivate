@@ -23,6 +23,7 @@ def dict_overlay(o, params):
     for (key,value) in params.iteritems():
         # Convert types if needed
         if hasattr(o,key):
+            print "key %s value %s" % (key,value)
             if isinstance(getattr(o,key), float):
                 value = float(value)
             if isinstance(getattr(o,key), int):

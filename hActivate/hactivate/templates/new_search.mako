@@ -4,7 +4,7 @@
     <div id="content">
         <form action="">
             Keywords<input type="text" name="keywords" /> (comma separated) <br/>
-            Raduis<input type="text" name="radius" />(in miles) <br/>
+            radius<input type="text" name="radius" />(in miles) <br/>
             Lon        <input id="lng" type="text" name="lon"        /><br />
             Lat        <input id="lat" type="text" name="lat"        />
             

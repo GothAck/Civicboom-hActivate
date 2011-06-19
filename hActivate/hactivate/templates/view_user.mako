@@ -50,7 +50,7 @@
                     fillOpacity: 0.25,
                     map: map,
                     center: ll,
-                    radius: ${search.raduis}*1000,
+                    radius: ${search.radius}*1000,
                     keywords:   "Searching this area for:<br /><p>${search.keywords}</p>",
                 };
                 var area = new google.maps.Circle(areaOpts);

@@ -57,7 +57,7 @@ class ItemController(BaseController):
                 #print "searching for keyword %s in %s" % ( keyword , item.description )
                 if keyword in item.description:
                     #print "distance from %s to %s" % ( search.lon , item.lon )
-                    if distance(search, item) < search.raduis:
+                    if distance(search, item) < search.radius:
                         # search.user.notify('')
                         print "alert %s to %s" % (search.user.username, item.title)
                         notify(search.user, "New item found: %s" % (item.title))
@@ -103,12 +103,12 @@ class ItemController(BaseController):
         
         params = dict(request.params)
         if 'radius' not in params:
-            params['radius'] = 0.01
+            params['radius'] = '0.01'
         # Delete black lon lats so it defaults to user location is missing
         if 'lon' in params and not params.get('lon'):
-            del parms['lon']
+            del params['lon']
         if 'lat' in params and not params.get('lat'):
-            del parms['lat']
+            del params['lat']
         
         search = UserSearch()
         dict_overlay(search, params)
