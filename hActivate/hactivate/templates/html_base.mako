@@ -20,13 +20,15 @@
                 % if c.flash:
                 <p class="flash_message">${c.flash}</p>
                 % endif
+                <p class="login">
                 % if c.logged_in_user:
-                <p>Signed in as ${c.logged_in_user.username} <a href="${url(controller='account', action='signout')}">signout</a></p>
+                Signed in as ${c.logged_in_user.username} <a href="${url(controller='account', action='signout')}">signout</a>
                 % else:
-                <p><a href="${url(controller='account', action='signin')}">Signin</a></p>
+                <a href="${url(controller='account', action='signin')}">Signin</a>
                 % endif
+                </p>
             </div>
-            <div style="clear: both;"></div>
+            <div style="clear: both; padding: 1em;"></div>
             <div id="menu">
                 <ul>
                     <li><a href="${url(controller='misc', action='titlepage')}">Home</a></li>
@@ -39,6 +41,7 @@
                 </ul>
             </div>
             ${next.body()}
+            <div style="clear: both"></div>
         </div>
 
     </body>

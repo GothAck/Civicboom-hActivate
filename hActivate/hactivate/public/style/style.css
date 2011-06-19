@@ -10,8 +10,13 @@ body {
 }
 
 .logo {
+    float: left;
     width: 150px;
     border: 1px solid black;
+}
+
+.login {
+    float: right;
 }
 
 .flash_message {
@@ -32,10 +37,12 @@ body {
     margin: 2em;
     min-height: 80%;
     padding: 1em;
+    -moz-border-radius: 1em;
+    border-radius: 1em;
 }
 
 #title_bar {
-    padding: 0;
+    padding: 10px;
     margin: 0 0 1em 0;
     text-align: center;
     clear: both;
