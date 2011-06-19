@@ -16,10 +16,9 @@ body {
 #wrapper {
     border: 1em solid #779EBC;
     background-color: white;
-    margin: 2em auto 0 auto;
-    min-height: 600px;
+    margin: 2em;
+    min-height: 80%;
     padding: 1em;
-    width: 1024px;
 }
 
 #title_bar {
@@ -30,20 +29,17 @@ body {
 }
 
 #menu {
-    float: left;
     padding: 10px;
     margin: 0;
-    display: inline-block;
+    display: block;
     width: 230px;
     border: 1px solid black;
 }
 
 #item_canvas {
-    float: right;
     padding: 10px;
     margin: 0;
     display: inline-block;
-    width: 230px;
     border: 1px solid black;
 }
 
@@ -51,6 +47,12 @@ body {
     padding: 0;
     margin: 0;
     display: inline-block;
-    height: 500px;
-    width: 500px;
+    height: 450px;
+    width: 450px;
+}
+
+#content, #menu, #item_canvas, #map_canvas {
+    position: relative;
+    float: left;
+    margin-left: 10px;
 }
