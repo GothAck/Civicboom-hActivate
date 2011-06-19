@@ -50,28 +50,28 @@ def init_base_data():
         # -- Searchs ---
         
         s1 = UserSearch()
-        s1.raduis = 1
+        s1.radius = 1
         s1.lon =  -0.120335
         s1.lat =  51.532255
         s1.keywords = "bike"
         u1.searchs.append(s1)
         
         s1 = UserSearch()
-        s1.raduis = 1
+        s1.radius = 1
         s1.lon =  -0.133188
         s1.lat =  51.539662
         s1.keywords = "ladder"
         u1.searchs.append(s1)
         
         s1 = UserSearch()
-        s1.raduis = 1
+        s1.radius = 1
         s1.lon = -2.357254
         s1.lat =  51.386352
         s1.keywords = "mattress"
         u2.searchs.append(s1)
         
         s1 = UserSearch()
-        s1.raduis = 1
+        s1.radius = 1
         s1.lon = -2.357254
         s1.lat =  51.386352
         s1.keywords = "camera"

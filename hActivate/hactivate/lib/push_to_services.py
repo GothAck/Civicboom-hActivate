@@ -18,7 +18,7 @@ def freeminder(item):
         'item_id'      : str(item.id)       ,
     })
     
-    print body
+    #print body
     
     connection = httplib.HTTPConnection("www.free-minder.org")
     headers = {'Content-Type': 'application/json'}

@@ -80,7 +80,7 @@ class UserSearch(Base):
     id              = Column(Integer(),      primary_key=True)
     user_id         = Column(Integer(),     ForeignKey('user.id'),  nullable=False, index=True)
     
-    raduis          = Column(Float(),nullable=False, default=0)
+    radius          = Column(Float(),nullable=False, default=0)
     lon             = Column(Float()) # optional
     lat             = Column(Float()) # optional - will use home_### if no location given
     
