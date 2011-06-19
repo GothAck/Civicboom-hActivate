@@ -7,10 +7,21 @@ class AccountController(BaseController):
         if request.environ['REQUEST_METHOD'] == 'GET':
             return render("signin.mako")
         
-        #perform signin        
-        return "signing in as %s" % request.params['username']
-        #redirect to ???
+        username = request.params.get('username')
+        if username:
+            if not get_user(username):
+                set_flash('failed signin')
+            else:
+                session['user'] = username
+                session.save()
+                set_flash('signed in as %s' % username)
+        
+        return redirect('/')
     
     def signout(self):
-        # clear session
-        pass
+        try:
+            session['user'] = request.params.get('username')
+            session.save()
+        except:
+            pass
+        return redirect('/')

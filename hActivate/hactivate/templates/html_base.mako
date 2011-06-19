@@ -8,6 +8,18 @@
     </head>
     
     <body>
+
+        <div class="header">
+            % if c.flash:
+            <p class="flash_message">${c.flash}</p>
+            % endif
+            % if c.logged_in_user:
+            <p>Signed in as ${c.logged_in_user.username}</p>
+            % else:
+            <a href="${url(controller='account', action='signin')}">Signin</a>
+            % endif
+        </div>
+
         <div id="wrapper">
             <div id="title_bar">
                 <img class="logo" src="/logo.png" />
@@ -15,12 +27,7 @@
             <div style="clear: both;"></div>
             ${next.body()}
         </div>
+
     </body>
 
 </html>
-
-<%def name="menu()">
-    <div id="menu">
-        
-    </div>
-</%def>
